@@ -4,18 +4,17 @@
 options:
     Version: 0.1
     NoPermission: &8[&6Vile&8] &7Sorry but you do not have enough permissions to execute this command!
-    ServerPrefix: &8[&6Vile&8] &7
-    ServerIP: Vile.minehut.gg
-    ServerDiscord: https://discord.gg/QAenacG
-    ServerBuycraft: http://store.vileskyblock.me
-    ServerForums: https://vile.forums.gg
+    Prefix: &8[&6Vile&8] &7
+    IP: Vile.minehut.gg
+    Discord: https://discord.gg/QAenacG
+    Buycraft: http://store.vileskyblock.me
+    Forums: https://vile.forums.gg
 
 
-    # Admin Commands
+# Admin Commands
 
-    command /serverip:
-        permission: rank.default
-        permission message: {@NoPermission}
-        aliases: /ip
-        trigger:
-            message "{@ServerPrefix}The server IP is &6{@ServerIP}&7!"
+command /serverip:
+    permission: rank.default
+    permission message: {@NoPermission}
+    trigger:
+        message "{@Prefix}The server IP is &6{@IP}&7!"
