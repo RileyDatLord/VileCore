@@ -70,3 +70,50 @@ command /clearchat:
             message ""
         message "&6%player%&7 has successfully cleared the server chat!"
         stop
+
+
+# Other Commands
+
+command /ec:
+	aliases: /enderchest
+	permission: rank.knight
+	permission message: {@NoPermission}		
+	trigger:
+		open the player's ender chest to the player
+		send "&7Opening your private enderchest."
+
+command /setrank [<player>] [<text>]:
+	permission: rank.admin
+	permission message: &8[&6Vile&8] &7Sorry but you do not have enough permissions to execute this command!
+	trigger:
+		if arg-1 is set:
+			if arg-2 is not set:
+				send "&8[&6Vile&8] &7Please specify a rank to set &6%arg-1% &7to!"
+		if arg-1 is not set:
+			send "&8[&6Vile&8] &7Please specify a player, and then a rank to set them to. %nl%&7Usage: &6&o/setrank [<player>] [<valid rank>]"
+		else:
+			execute console command "/manuadd %arg-1% %arg-2%"
+			send "&8[&6Vile&8] &7You have set &6%arg-1%'s &7rank to &6%arg-2%"	
+			send "&8[&6Vile&8] &6%player% &7has set your rank to &6%arg-2%" to arg-1
+            stop
+
+# Important Backend Commands 
+
+command /save:
+	permission: rank.admin
+	permission message: &8[&6Vile&8] &7Sorry but you do not have enough permissions to execute this command!
+	trigger:
+		send "&8[&6Vile&8] &aThe server is now autosaving, expect some lag!"
+		make console execute command "save-all"
+		stop
+
+# Chat Protection Commands
+
+on chat:
+	if player doesn't have permission "chatcore.admin.bypass":
+		if message contains "hack", hacker", "hacking", "hacc", "hax" or "haccer":
+			cancel event
+			send "&6NOTE&7: &7Accusing players of &6cheating &7in-game is against the rules."
+            send "&7If you think someone is cheating, please gather evidence and report"
+            send "&7it at &6&n{@Discord}" 
+			stop
