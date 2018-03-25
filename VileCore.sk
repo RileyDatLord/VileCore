@@ -33,24 +33,24 @@ command /store:
 on command:
     if command is "plugins":
         if player does not have the permission "rank.admin":
-        send "{@NoPermission}"
-        cancel event
+            send "{@NoPermission}"
+            cancel event
 on command:
     if command is "bukkit:pl":
         if player does not have the permission "rank.admin":
-        send "{@NoPermission}"
-        cancel event
+            send "{@NoPermission}"
+            cancel event
 on command:
     if command is "bukkit:plugins":
         if player does not have the permission "rank.admin":
-        send "{@NoPermission}"
-        cancel event
+            send "{@NoPermission}"
+            cancel event
 
 # Chat Commands
 
 command /clearmychat:
     permission: rank.default
-    permission message {@NoPermission}
+    permission message: {@NoPermission}
     trigger:
         message "&7"
         loop 150 times:
@@ -61,7 +61,7 @@ command /clearmychat:
 
 command /clearchat:
     permission: rank.mod
-    permission message {@NoPermission}
+    permission message: {@NoPermission}
     aliases: /cc 
     trigger:
         message "&7"
