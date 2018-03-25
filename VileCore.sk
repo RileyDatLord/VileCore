@@ -1,4 +1,21 @@
 # Vile Core Developed By FrostedWeFall 
 # Version 0.1 :) 
 
-# Just pushing this test 
+options:
+    Version: 0.1
+    NoPermission: &8[&6Vile&8] &7Sorry but you do not have enough permissions to execute this command!
+    ServerPrefix: &8[&6Vile&8] &7
+    ServerIP: Vile.minehut.gg
+    ServerDiscord: https://discord.gg/QAenacG
+    ServerBuycraft: http://store.vileskyblock.me
+    ServerForums: https://vile.forums.gg
+
+
+    # Admin Commands
+
+    command /serverip:
+        permission: rank.default
+        permission message: {@NoPermission}
+        aliases: /ip
+        trigger:
+            message "{@ServerPrefix}The server IP is &6{@ServerIP}&7!"
