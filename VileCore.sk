@@ -27,7 +27,7 @@ command /store:
     permission: rank.default
     permission message: {@NoPermission}
     trigger:
-        message "%nl% &7The current store link is &9&o{@Buycraft}&r %nl%"
+        message "%nl% &7The current store link is &6&n{@Buycraft}&r %nl%"
         stop
 
 on command:
