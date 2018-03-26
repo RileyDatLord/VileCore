@@ -16,6 +16,7 @@ options:
 command /serverip:
     permission: rank.default
     permission message: {@NoPermission}
+    aliases: /sip
     trigger:
         message "{@Prefix}The server IP is &6{@IP}&7!"
         stop
@@ -119,7 +120,7 @@ on chat:
     set {itemName::%player%::*} to player's tool 
   replace all "_" in {itemName::%player%::*} with " "
   replace all "[item]" with "&l&o%{itemName::%player%::*}%" in message
-  
+
 # Chat Protection Commands
 
 on chat:
@@ -138,7 +139,7 @@ command /console:kitbuilder [<offline player>]:
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&6Congratulations, &7%argument 1% &athanks for purchasing a &6Premimum Builder GKit &7 @ &6&lVile&a!"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Builder GKit &7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "/kit builder %argument 1%"
@@ -167,4 +168,7 @@ command /console:starterbundle [<offline player>]:
           make console execute command "sellwands give %argument 1%"
           make console execute command "mp 3 %argument 1% 1"
           make console execute command "mp 2 %argument 1% 2"
-          make console execute command "eco give %argument 1% 75000"          
+          make console execute command "eco give %argument 1% 75000"        
+
+
+  
