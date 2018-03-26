@@ -106,7 +106,20 @@ command /save:
 		send "&8[&6Vile&8] &aThe server is now autosaving, expect some lag!"
 		make console execute command "save-all"
 		stop
+# Item 2 Chat #
 
+on chat:
+  set {nbt::%player%::*} to "%lore of player's tool%"
+  replace all "'" in {nbt::%player%::*} with "\\'"
+  replace all """" in {nbt::%player%::*} with "\\"""
+  replace all "_" in {nbt::%player%::*} with " "
+  if name of player's tool is set:
+    set {itemName::%player%::*} to name of player's tool
+  else:
+    set {itemName::%player%::*} to player's tool 
+  replace all "_" in {itemName::%player%::*} with " "
+  replace all "[item]" with "&l&o%{itemName::%player%::*}%" in message
+  
 # Chat Protection Commands
 
 on chat:
@@ -117,3 +130,41 @@ on chat:
             send "&7If you think someone is cheating, please gather evidence and report"
             send "&7it at &6&n{@Discord}" 
             stop
+
+# Buycraft Purchase Message Thingys #
+
+command /console:kitbuilder [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &athanks for purchasing a &6Premimum Builder GKit &7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          make console execute command "/kit builder %argument 1%"
+
+command /console:repaircard [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Repair Card ( One time use only ) &7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          make console execute command "/repaircard %argument 1%"
+
+command /console:starterbundle [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Starter Bundle ( One time use only ) &7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          make console execute command "manuaddp %argument 1% Hero"
+          make console execute command "kit knight %argument 1%"
+          make console execute command "ss give %argument 1% pig 1"
+          make console execute command "sellwands give %argument 1%"
+          make console execute command "mp 3 %argument 1% 1"
+          make console execute command "mp 2 %argument 1% 2"
+          make console execute command "eco give %argument 1% 75000"          
