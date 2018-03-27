@@ -37,7 +37,7 @@ command /youtube [<text>]:
 		message "&8&m-----------------------------"
 		message "&8» &7You want the &6YT &7Rank?"
 		message "&8» &7These are the requirements:"
-		message "&8» &8» &5&lYT &8&l- &d250 subs"
+		message "&8» &8» &6&lYT &8&l- &e250 subs"
 		message "&8» &8» &7Uploaded Server-Review"
 		message "&8» &cIf you have those requirements"
 		message "&8» &cplease contact a staff member."
