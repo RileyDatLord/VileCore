@@ -208,45 +208,45 @@ every 10 seconds:
 # Messaging Module # 
 
 command /msg [<player>] [<text>]:
-	description: Send a private message to another player
-	usage: &7/&emsg &7<playername> &6<message>
-	aliases: /tell, /whisper, /pm
-	trigger:
-		if arg 1 is set:
-			if arg 1 isn't player:
-				if arg 2 is set:
-					send "&7From: &6%player% &7-> %colored arg 2%" to arg 1
-					send "&7To: &6%arg 1% &7-> %colored arg 2%" to player
-					set {VileCoreMsg::replyto::%arg 1%} to "%player%" parsed as player
-					stop
-				else:
-					send "&cYou have to specify what message you want to send to the specified player!"
-					stop
-			else:
-				send "&cYou can't send private messages to yourself xD"
-		else:
-			send "&cYou have to specify to which online player you want to send the private message!"
-			stop
+    description: Send a private message to another player
+    usage: &7/&6msg &7<playername> &6<message>
+    aliases: /tell, /whisper, /pm
+    trigger:
+    	if arg 1 is set:
+        		if arg 1 isn't player:
+        		    if arg 2 is set:
+					    send "&7From: &6%player% &7-> %colored arg 2%" to arg 1
+                        send "&7To: &6%arg 1% &7-> %colored arg 2%" to player
+                        set {VileCoreMsg::replyto::%arg 1%} to "%player%" parsed as player
+                        stop
+                    else:
+                      	send "&cYou have to specify what message you want to send to the specified player!"
+                        stop
+                else:
+                    send "&cYou can't send private messages to yourself xD"
+            else:
+    	        send "&cYou have to specify to which online player you want to send the private message!"
+		        stop
 
 command /reply [<text>]:
-	description: Reply to a private message
-	usage: &7/&ereply &7<playername> &6<message>
-	aliases: /r, /answer
-	trigger:
-		if arg 1 is set:
-			if {VileCoreMsg::replyto::%player%} is set:
-				if {VileCoreMsg::replyto::%player%} is online:
-					make player execute command "/msg %{VileCoreMsg::replyto::%player%}% %arg 1%"
-					stop
-				else:
-					send "&cYou don't have a player to reply to, no online player sent you a private message"
-					stop
-			else:
-				send "&cYou don't have a player to reply to, no online player sent you a private message"
-				stop
-		else:
-			send "&cYou have to specify what message you want to send to the specified player!"
-			stop
+    description: Reply to a private message
+    usage: &7/&6reply &7<playername> &6<message>
+    aliases: /r, /answer
+    trigger:
+        if arg 1 is set:
+            if {VileCoreMsg::replyto::%player%} is set:
+            	if {VileCoreMsg::replyto::%player%} is online:
+            		make player execute command "/msg %{VileCoreMsg::replyto::%player%}% %arg 1%"
+                    stop
+                else:
+                    send "&cYou don't have a player to reply to, no online player sent you a private message"
+                    stop
+            else:
+                send "&cYou don't have a player to reply to, no online player sent you a private message"
+                stop
+        else:
+            send "&cYou have to specify what message you want to send to the specified player!"
+            stop
 
 
 
