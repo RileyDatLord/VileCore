@@ -11,7 +11,7 @@ options:
     Forums: https://vile.forums.gg
 
 
-# Admin Commands
+# Information Commands
 
 command /serverip:
     permission: rank.default
@@ -30,6 +30,19 @@ command /store:
     trigger:
         message "%nl% &7The current store link is &6&n{@Buycraft}&r %nl%"
         stop
+
+command /youtube [<text>]:
+	aliases: yt, youtuber
+	trigger:
+		message "&8&m-----------------------------"
+		message "&8» &7You want the &6YT &7Rank?"
+		message "&8» &7These are the requirements:"
+		message "&8» &8» &5&lYT &8&l- &d250 subs"
+		message "&8» &8» &7Uploaded Server-Review"
+		message "&8» &cIf you have those requirements"
+		message "&8» &cplease contact a staff member."
+		message "&8&m-----------------------------"
+		stop
 
 on command:
     if command is "plugins":
