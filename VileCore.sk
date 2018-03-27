@@ -44,6 +44,59 @@ command /youtube [<text>]:
 		message "&8&m-----------------------------"
 		stop
 
+command /friends [<text>] [<player>]:
+	aliases: f, friends
+	trigger:
+		if arg 1 is not set:
+			send ""
+			send "&3/friends add <player> - &bAdd a friend" to player
+			send "&3/friends remove <player> - &bRemove a friend" to player
+			send "&3/friends list - &bShow your friends list" to player
+			send ""
+		if arg 1 is "invite" or "add" or "accept":
+			if player-arg is set:
+				if player-arg is not player:
+					if {friend.%uuid of player%::*} contains "%player-arg%":
+						send "&eYou removed %player%" to player
+						stop
+					if {friend.request.%uuid of player%} is set:
+						add player to {friend.%{friend.request.%uuid of player%}%::*}
+						add player to {friend.%uuid of player-arg%::*}						
+						add player-arg to {friend.%uuid of player%::*}						
+						send "%nl% &3You are now friends with &b%player-arg% %nl% &7" to player
+						send " %nl% &7 &3You are now friends with &b%player% %nl% &7" to player-arg
+						wait 1 tick
+						delete {friend.request.%uuid of player%}						
+					else:
+						set {friend.request.%uuid of player-arg%} to player
+						send "" to player-arg
+						send "&3%player% &bsent you friend request!" to player-arg
+						send "&3To accept, type: &b/friends add &3%player%" to player-arg
+						send "" to player-arg
+						send "&3Your friend request has been sent!" to player
+				else:
+					send "&bYou can not send a friend request to yourself smh!" to player
+			else:
+				send "&3Who would you like to send a friend request to?" to player
+		if arg 1 is "remove" or "delete":
+			if player-arg is set:
+				if player-arg is not player:
+					if {friend.%uuid of player%::*} contains "%player-arg%":
+						remove player-arg from {friend.%uuid of player%::*}
+						remove player from {friend.%uuid of player-arg%::*}
+						send "&bYou removed &b%player-arg% &3from your friends list!" to player
+						send "&bYou have been removed from &3%player%'s &bfriends list &e!" to player-arg
+					else:
+						send "&c[ERROR] &7This player is not your friend!" to player
+						stop
+		if arg 1 is "list":
+			loop {friend.%uuid of player%::*}:
+				if loop-value is online:
+					send "&eFriends &aOnline: &3[&b%loop-value%&3]" to player
+				if loop-value is offline:
+					send "&eFriends &cOffline: &3[&b%loop-value%&3]" to player
+
+
 on command:
     if command is "plugins":
         if player does not have the permission "rank.admin":
