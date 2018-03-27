@@ -173,19 +173,19 @@ command /console:starterbundle [<offline player>]:
 
   # Main Command #
 
-  command /vilecore [<text>]:
-	description: Main Command for the VileCore
-	aliases: /vileskyblock /vc
-	permission: rank.seniormoderator
-	permission message: {@NoPermission}
-	trigger:
+command /vilecore [<text>]:
+    description: Main Command for the VileCore
+    aliases: /vileskyblock /vc
+    permission: rank.seniormoderator
+    permission message: {@NoPermission}
+    trigger:
         if arg 1 is not set:
             send "{@Prefix}Incorrect arguments!"
         if arg 1 is "reload":
             broadcast "%nl% &7Reloading the &6VileCore&7 Skript... %nl% &7"
-            make player exectue command "sk reload VileCore.sk"
+            make player execute command "sk reload VileCore.sk"
             wait 5 seconds
-            broadcast "&aVileCore {@Version} has been reloaded
+            broadcast "&aVileCore {@Version} has been reloaded"
             stop
         
 
@@ -197,8 +197,10 @@ on leftclick:
 every 10 seconds:
 	loop all players:
 		if {clicks::%loop-player%} is set:
-			set action bar of loop-player to "&e7otal: &6%{clicks::%loop-player%}% &7- &6CPS&7: &6%{clicks::%loop-player%} / 10%"
+			set action bar of loop-player to "&7Total: &6%{clicks::%loop-player%}% &7- &6CPS&7: &6%{clicks::%loop-player%} / 10%"
 		delete {clicks::%loop-player%}
+
+
 
 
 
