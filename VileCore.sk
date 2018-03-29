@@ -95,6 +95,25 @@ command /friends [<text>] [<player>]:
 					send "&eFriends &aOnline: &3[&b%loop-value%&3]" to player
 				if loop-value is offline:
 					send "&eFriends &cOffline: &3[&b%loop-value%&3]" to player
+# Hero Rank Commands #
+command /ely:
+    permission: rank.hero
+    permission message: &cYou dont have access to this!
+    trigger:
+        push player upwards at speed 4
+        send "&bWooo!"
+        set player's chestplate to elytra named "&r"
+
+# Knight Rank Commands # 
+
+
+# Lord Rank Commands #
+
+
+# God Rank Commands #
+
+
+# Vile Rank Commands # 
 
 
 on command:
