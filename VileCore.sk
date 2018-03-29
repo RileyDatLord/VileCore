@@ -22,9 +22,9 @@ command /serverip:
         stop
 
 # No need for /discord as DiscordSRV already has the command enabled!
-# Same for /buy and /Buycraft
+# Same for /buy
 
-command /store:
+command /buycraft:
     permission: rank.default
     permission message: {@NoPermission}
     trigger:
