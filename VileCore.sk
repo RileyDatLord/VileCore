@@ -125,7 +125,7 @@ on craft of enderchest:
 	player doesn't have permission "rank.hero":
 		send "&7You must have the rank &3[HERO]&7 or up to be able to craft hoppers!"
 		cancel event
-        
+
 # Knight Rank Commands # 
 
 
@@ -267,7 +267,27 @@ on chat:
             send "&7If you think someone is cheating, please gather evidence and report"
             send "&7it at &6&n{@Discord}" 
             stop
-
+on chat:
+	if message contains ".com", ".net", ".de", ".me", ".eu", "eu.", "us.", ".gg" or ".nu":
+		if player does not have permission "chatcore.admin.bypass":
+			cancel event
+			message "&7&m-------------------------------------------"
+			message "&6Advertising is against the rules. You will be"
+			message "&6permanently banned from the server if you attempt"
+			message "&6to advertise."
+			message "&7&m-------------------------------------------"
+			stop
+on chat:
+	if message contains "fuck", "bitch", "warzone", "cunt", "tits", "nigger", "nigga", "ass" or "shit":
+		if player does not have permission "chatcore.admin.bypass":
+			cancel event
+			message "&7&m-------------------------------------------"
+			message "&6Swearing is against the rules. You will be"
+			message "&6permanently banned or muted from the server"
+			message "&6if you attempt to bypass the chat filter."
+			message "&7&m-------------------------------------------"
+			stop
+            
 # Buycraft Purchase Message Thingys #
 
 command /console:kitbuilder [<offline player>]:
