@@ -12,7 +12,19 @@ options:
 
 
 # Information Commands
-
+command /help:
+    permission: rank.default
+    permission message: {@NoPermission}
+    trigger:
+    	message "&7Welcome to &6Vile"
+	message "&8&m----------------------------------"
+	message "&7Here are some useful commands!"
+	message "&a/is &7- Opens island menu
+	message "&a/shop &7- Open's Vile's custom shop
+	message "&a/sell hand &7- Allows you to sell the item in your hand"
+	message "&a/spawn &7- Teleports you to the Vile spawn
+	message "&a/help &7- Resends this text!"
+	message "&8&m----------------------------------"
 command /serverip:
     permission: rank.default
     permission message: {@NoPermission}
