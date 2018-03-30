@@ -192,7 +192,19 @@ command /save:
 		send "&8[&6Vile&8] &aThe server is now autosaving, expect some lag!"
 		make console execute command "save-all"
 		stop
-
+command /help:
+    permission: rank.default
+    permission message: {@NoPermission}
+    trigger:
+        message "&7Welcome to &6Vile"
+        message "&8&m----------------------------------"
+        message "&7Here are some useful commands!"
+        message "&a/is &7- Opens island menu
+        message "&a/shop &7- Open's Vile's custom shop
+        message "&a/sell hand &7- Allows you to sell the item in your hand"
+        message "&a/spawn &7- Teleports you to the Vile spawn
+        message "&a/help &7- Resends this text!"
+        message "&8&m----------------------------------"
 command /rules:
     aliases: /ru,
     trigger:
@@ -265,6 +277,16 @@ command /console:unban [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "unban %argument 1%"
 
+command /console:unmute [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Unmute&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "mute %argument 1%"
+
 command /console:sellwand [<offline player>]:
      permission: op
      trigger:
@@ -301,7 +323,57 @@ command /console:starterbundle [<offline player>]:
           make console execute command "mp 2 %argument 1% 2"
           make console execute command "eco give %argument 1% 75000"        
 
+command /console:rankhero [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Hero Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Hero"      
 
+command /console:rankknight [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Knight Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Knight" 
+
+command /console:ranklord [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Lord Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Lord"
+
+command /console:rankgod [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6God Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% God"   
+
+command /console:rankvile [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Vile Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Vile"                              
+
+                          
   # Main Command #
 
 command /vilecore [<text>]:
