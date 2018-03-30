@@ -240,7 +240,7 @@ command /console:kitbuilder [<offline player>]:
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Builder GKit &7 @ &6&lVile&a!"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Builder GKit&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "/kit builder %argument 1%"
@@ -250,26 +250,37 @@ command /console:kitbutcher [<offline player>]:
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Butcher GKit &7 @ &6&lVile&a!"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Butcher GKit&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "/kit butcher %argument 1%"
 
-command /console:sellwands [<offline player>]:
+command /console:unban [<offline player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Butcher GKit &7 @ &6&lVile&a!"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Unban&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "unban %argument 1%"
+
+command /console:sellwand [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Sell Wand&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           execute console command "sellwands give %argument 1%"
+
 command /console:repaircard [<offline player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Repair Card ( One time use only ) &7 @ &6&lVile&a!"
+          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Repair Card ( One time use only )&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "/repaircard %argument 1%"
@@ -279,7 +290,7 @@ command /console:starterbundle [<offline player>]:
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Starter Bundle ( One time use only ) &7 @ &6&lVile&a!"
+          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Starter Bundle ( One time use only )&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "manuaddp %argument 1% Hero"
@@ -302,7 +313,7 @@ command /vilecore [<text>]:
         if arg 1 is not set:
             send "{@Prefix}Incorrect arguments!"
         if arg 1 is "reload":
-            broadcast "%nl% &7Reloading the &6VileCore&7 Skript... %nl% &7"
+            broadcast "%nl%&7Reloading the &6VileCore&7 Skript... %nl% &7"
             make player execute command "sk reload VileCore.sk"
             wait 5 seconds
             broadcast "&aVileCore {@Version} has been reloaded"
