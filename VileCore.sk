@@ -217,6 +217,7 @@ command /help:
         message "&a/spawn &7- Teleports you to the Vile spawn
         message "&a/help &7- Resends this text!"
         message "&8&m----------------------------------"
+
 command /rules:
     aliases: /ru,
     trigger:
@@ -308,6 +309,36 @@ command /console:sellwand [<offline player>]:
           broadcast "&r"
           broadcast "&7&m------------------------"
           execute console command "sellwands give %argument 1%"
+
+command /console:xpsword [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6XP Sword&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          make console execute command "kit xpsword %argument 1%"
+
+command /console:fly [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6/fly&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuaddp %argument 1% essentials.fly"
+
+command /console:feed [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6/feed&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuaddp %argument 1% essentials.feed"                                        
 
 command /console:repaircard [<offline player>]:
      permission: op
