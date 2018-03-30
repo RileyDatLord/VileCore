@@ -245,6 +245,25 @@ command /console:kitbuilder [<offline player>]:
           broadcast "&7&m------------------------"
           make console execute command "/kit builder %argument 1%"
 
+command /console:kitbutcher [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Butcher GKit &7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          make console execute command "/kit butcher %argument 1%"
+
+command /console:sellwands [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Butcher GKit &7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "sellwands give %argument 1%"
 command /console:repaircard [<offline player>]:
      permission: op
      trigger:
