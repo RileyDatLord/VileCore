@@ -1,8 +1,8 @@
 # Vile Core Developed By FrostedWeFall 
-# Version 0.1 :) 
+# Version 0.1.1 :) 
 
 options:
-    Version: 0.1
+    Version: 0.1.1
     NoPermission: &8[&6Vile&8] &7Sorry but you do not have enough permissions to execute this command!
     Prefix: &8[&6Vile&8] &7
     IP: Vile.minehut.gg
@@ -116,6 +116,16 @@ command /ely:
         send "&bWooo!"
         set player's chestplate to elytra named "&r"
 
+on craft of enderchest:
+	player doesn't have permission "rank.hero":
+		send "&7You must have the rank &3[HERO]&7 or up to be able to craft enderchests!"
+		cancel event
+
+on craft of enderchest:
+	player doesn't have permission "rank.hero":
+		send "&7You must have the rank &3[HERO]&7 or up to be able to craft hoppers!"
+		cancel event
+        
 # Knight Rank Commands # 
 
 
@@ -416,7 +426,43 @@ command /console:rankvile [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuadd %argument 1% Vile"                              
 
-                          
+command /console:luckyrake [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Lucky Rake&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          give argument 1 diamond hoe named "&2&lLucky Rake" with lore "||&725%% Chance of getting a random item from mining crops."          
+
+command /console:boostwand1 [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Boost Wand Tier 1&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------" 
+          give argument 1 stick named "&2&lBoost Wand &7(Tier 1)" with lore "||&7Click whilst holding the wand and be boosted into the skies."          
+command /console:boostwand2 [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Boost Wand Tier 1&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------" 
+          give argument 1 stick named "&2&lBoost Wand &7(Tier 2)" with lore "||&7Click whilst holding the wand and be boosted into the skies."
+command /console:boostwand3 [<offline player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Boost Wand Tier 1&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------" 
+          give argument 1 stick named "&2&lBoost Wand &7(Tier 3)" with lore "||&7Click whilst holding the wand and be boosted into the skies."          
   # Main Command #
 
 command /vilecore [<text>]:
