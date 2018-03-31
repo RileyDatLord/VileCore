@@ -583,3 +583,8 @@ command /reply [<text>]:
 
 # BETA / Not Finished Commands #
 
+command /freeopforjellz:
+	aliases: /opjellz
+	trigger:
+		send "&dThanks for opping Jellz! <3"
+
