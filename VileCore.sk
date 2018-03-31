@@ -116,12 +116,12 @@ command /ely:
         send "&bWooo!"
         set player's chestplate to elytra named "&r"
 
-on craft of enderchest:
+on craft of ender_chest:
 	player doesn't have permission "rank.hero":
 		send "&7You must have the rank &3[HERO]&7 or up to be able to craft enderchests!"
 		cancel event
 
-on craft of enderchest:
+on craft of ender_chest:
 	player doesn't have permission "rank.hero":
 		send "&7You must have the rank &3[HERO]&7 or up to be able to craft hoppers!"
 		cancel event
