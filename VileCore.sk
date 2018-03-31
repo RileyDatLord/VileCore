@@ -16,15 +16,15 @@ command /help:
     permission: rank.default
     permission message: {@NoPermission}
     trigger:
-    	message "&7Welcome to &6Vile"
-	message "&8&m----------------------------------"
-	message "&7Here are some useful commands!"
-	message "&a/is &7- Opens island menu
-	message "&a/shop &7- Open's Vile's custom shop
-	message "&a/sell hand &7- Allows you to sell the item in your hand"
-	message "&a/spawn &7- Teleports you to the Vile spawn
-	message "&a/help &7- Resends this text!"
-	message "&8&m----------------------------------"
+        message "&7Welcome to &6Vile"
+        message "&8&m----------------------------------"
+        message "&7Here are some useful commands!"
+        message "&a/is &7- Opens island menu"
+        message "&a/shop &7- Open's Vile's custom shop"
+        message "&a/sell hand &7- Allows you to sell the item in your hand"
+        message "&a/spawn &7- Teleports you to the Vile spawn"
+        message "&a/help &7- Resends this text!"
+        message "&8&m----------------------------------"
 command /serverip:
     permission: rank.default
     permission message: {@NoPermission}
@@ -214,19 +214,6 @@ command /save:
 		send "&8[&6Vile&8] &aThe server is now autosaving, expect some lag!"
 		make console execute command "save-all"
 		stop
-command /help:
-    permission: rank.default
-    permission message: {@NoPermission}
-    trigger:
-        message "&7Welcome to &6Vile"
-        message "&8&m----------------------------------"
-        message "&7Here are some useful commands!"
-        message "&a/is &7- Opens island menu
-        message "&a/shop &7- Open's Vile's custom shop
-        message "&a/sell hand &7- Allows you to sell the item in your hand"
-        message "&a/spawn &7- Teleports you to the Vile spawn
-        message "&a/help &7- Resends this text!"
-        message "&8&m----------------------------------"
 
 command /rules:
     aliases: /ru,
@@ -585,11 +572,9 @@ command /donate:
 		format gui slot 21 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
 		format gui slot 22 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
 		format gui slot 23 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 24 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
+		format gui slot 24 of player with lime_glass_pane named "&a✔" with lore "" to close then run player 
+command "donate"
 		format gui slot 27 of player with 33 named "" with lore "" to close then run player command "donate"
 		format gui slot 36 of player with 33 named "" with lore "" to close then run player command "donate"
 		format gui slot 45 of player with 33 named "" with lore "" to close then run player command "donate"
 		format gui slot 54 of player with 33 named "" with lore "" to close then run player command "donate"
-
-
-
