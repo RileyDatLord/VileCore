@@ -215,6 +215,37 @@ command /save:
 		make console execute command "save-all"
 		stop
 
+command /cmdspy:
+    permission: sk.admin
+    permission message: &cNo permission.
+    trigger:
+        if {cmd.%player%} is true:
+            set {cmd.%player%} to false
+            send "&aSuccess! &7&o(Turned CommandSPY Off!)"
+        else:
+            set {cmd.%player%} to true
+            send "&aSuccess! &7&o(Turned CommandSPY On!)"
+ 
+on command:
+    if command is not "updatetab":
+        set {command.%player%} to command
+        set {arg.%player%} to arguments
+        loop all players:
+            if {cmd.%loop-player%} is true:
+                if {arg.%player%} is set:
+                    send "&6&lCMDSpy &8&l» &7%player% &8- &eCommand: &7/%{command.%player%}% %{arg.%player%}%"
+                else:
+                    send "&6&lCMDSpy &8&l» &7%player% &8- &eCommand: &7/%{command.%player%}%"
+            else:
+                stop
+    else:
+        stop
+    delete {arg.%player%}
+    delete {command.%player%}
+ 
+on join:
+    set {cmd.%player%} to false
+
 command /rules:
     aliases: /ru,
     trigger:
