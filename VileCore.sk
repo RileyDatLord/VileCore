@@ -1,8 +1,8 @@
 # Vile Core Developed By FrostedWeFall 
-# Version 0.1 :) 
+# Version 0.1.1 :) 
 
 options:
-    Version: 0.1
+    Version: 0.1.1
     NoPermission: &8[&6Vile&8] &7Sorry but you do not have enough permissions to execute this command!
     Prefix: &8[&6Vile&8] &7
     IP: Vile.minehut.gg
@@ -12,7 +12,19 @@ options:
 
 
 # Information Commands
-
+command /help:
+    permission: rank.default
+    permission message: {@NoPermission}
+    trigger:
+        message "&7Welcome to &6Vile"
+        message "&8&m----------------------------------"
+        message "&7Here are some useful commands!"
+        message "&a/is &7- Opens island menu"
+        message "&a/shop &7- Open's Vile's custom shop"
+        message "&a/sell hand &7- Allows you to sell the item in your hand"
+        message "&a/spawn &7- Teleports you to the Vile spawn"
+        message "&a/help &7- Resends this text!"
+        message "&8&m----------------------------------"
 command /serverip:
     permission: rank.default
     permission message: {@NoPermission}
@@ -104,6 +116,16 @@ command /ely:
         send "&bWooo!"
         set player's chestplate to elytra named "&r"
 
+on craft of ender_chest:
+	player doesn't have permission "rank.hero":
+		send "&7You must have the rank &3[HERO]&7 or up to be able to craft enderchests!"
+		cancel event
+
+on craft of ender_chest:
+	player doesn't have permission "rank.hero":
+		send "&7You must have the rank &3[HERO]&7 or up to be able to craft hoppers!"
+		cancel event
+
 # Knight Rank Commands # 
 
 
@@ -193,6 +215,37 @@ command /save:
 		make console execute command "save-all"
 		stop
 
+command /cmdspy:
+    permission: sk.admin
+    permission message: &cNo permission.
+    trigger:
+        if {cmd.%player%} is true:
+            set {cmd.%player%} to false
+            send "&aSuccess! &7&o(Turned CommandSPY Off!)"
+        else:
+            set {cmd.%player%} to true
+            send "&aSuccess! &7&o(Turned CommandSPY On!)"
+ 
+on command:
+    if command is not "updatetab":
+        set {command.%player%} to command
+        set {arg.%player%} to arguments
+        loop all players:
+            if {cmd.%loop-player%} is true:
+                if {arg.%player%} is set:
+                    send "&6&lCMDSpy &8&l» &7%player% &8- &eCommand: &7/%{command.%player%}% %{arg.%player%}%"
+                else:
+                    send "&6&lCMDSpy &8&l» &7%player% &8- &eCommand: &7/%{command.%player%}%"
+            else:
+                stop
+    else:
+        stop
+    delete {arg.%player%}
+    delete {command.%player%}
+ 
+on join:
+    set {cmd.%player%} to false
+
 command /rules:
     aliases: /ru,
     trigger:
@@ -232,35 +285,125 @@ on chat:
             send "&7If you think someone is cheating, please gather evidence and report"
             send "&7it at &6&n{@Discord}" 
             stop
-
+on chat:
+	if message contains ".com", ".net", ".de", ".me", ".eu", "eu.", "us.", ".gg" or ".nu":
+		if player does not have permission "chatcore.admin.bypass":
+			cancel event
+			message "&7&m-------------------------------------------"
+			message "&6Advertising is against the rules. You will be"
+			message "&6permanently banned from the server if you attempt"
+			message "&6to advertise."
+			message "&7&m-------------------------------------------"
+			stop
+on chat:
+	if message contains "fuck", "bitch", "warzone", "cunt", "tits", "nigger", "nigga", "ass" or "shit":
+		if player does not have permission "chatcore.admin.bypass":
+			cancel event
+			message "&7&m-------------------------------------------"
+			message "&6Swearing is against the rules. You will be"
+			message "&6permanently banned or muted from the server"
+			message "&6if you attempt to bypass the chat filter."
+			message "&7&m-------------------------------------------"
+			stop
+            
 # Buycraft Purchase Message Thingys #
 
-command /console:kitbuilder [<offline player>]:
+command /console:kitbuilder [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Builder GKit &7 @ &6&lVile&a!"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Builder GKit&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "/kit builder %argument 1%"
 
-command /console:repaircard [<offline player>]:
+command /console:kitbutcher [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Repair Card ( One time use only ) &7 @ &6&lVile&a!"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Premimum Butcher GKit&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          make console execute command "/kit butcher %argument 1%"
+
+command /console:unban [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Unban&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "unban %argument 1%"
+
+command /console:unmute [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Unmute&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "mute %argument 1%"
+
+command /console:sellwand [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6Sell Wand&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "sellwands give %argument 1%"
+
+command /console:xpsword [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6XP Sword&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          make console execute command "kit xpsword %argument 1%"
+
+command /console:fly [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6/fly&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuaddp %argument 1% essentials.fly"
+
+command /console:feed [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing a &6/feed&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuaddp %argument 1% essentials.feed"                                        
+
+command /console:repaircard [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Repair Card ( One time use only )&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "/repaircard %argument 1%"
 
-command /console:starterbundle [<offline player>]:
+command /console:starterbundle [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
           broadcast "&r"
-          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Starter Bundle ( One time use only ) &7 @ &6&lVile&a!"
+          broadcast "&7Congratulations, &6%argument 1% &7thanks for purchasing a &6Starter Bundle ( One time use only )&7 @ &6&lVile&a!"
           broadcast "&r"
           broadcast "&7&m------------------------"
           make console execute command "manuaddp %argument 1% Hero"
@@ -271,7 +414,95 @@ command /console:starterbundle [<offline player>]:
           make console execute command "mp 2 %argument 1% 2"
           make console execute command "eco give %argument 1% 75000"        
 
+command /console:rankhero [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Hero Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Hero"      
 
+command /console:rankknight [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Knight Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Knight" 
+
+command /console:ranklord [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Lord Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Lord"
+
+command /console:rankgod [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6God Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% God"   
+
+command /console:rankvile [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Vile Rank&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          execute console command "manuadd %argument 1% Vile"                              
+
+command /console:luckyrake [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Lucky Rake&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------"
+          give argument 1 diamond hoe named "&2&lLucky Rake" with lore "||&725%% Chance of getting a random item from mining crops."          
+
+command /console:boostwand1 [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Boost Wand Tier 1&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------" 
+          give argument 1 stick named "&2&lBoost Wand &7(Tier 1)" with lore "||&7Click whilst holding the wand and be boosted into the skies."          
+
+command /console:boostwand2 [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Boost Wand Tier 1&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------" 
+          give argument 1 stick named "&2&lBoost Wand &7(Tier 2)" with lore "||&7Click whilst holding the wand and be boosted into the skies."
+
+command /console:boostwand3 [<player>]:
+     permission: op
+     trigger:
+          broadcast "&7&m------------------------"
+          broadcast "&r"
+          broadcast "&6Congratulations, &7%argument 1% &7thanks for purchasing &6Boost Wand Tier 1&7 @ &6&lVile&a!"
+          broadcast "&r"
+          broadcast "&7&m------------------------" 
+          give argument 1 stick named "&2&lBoost Wand &7(Tier 3)" with lore "||&7Click whilst holding the wand and be boosted into the skies."          
   # Main Command #
 
 command /vilecore [<text>]:
@@ -283,7 +514,7 @@ command /vilecore [<text>]:
         if arg 1 is not set:
             send "{@Prefix}Incorrect arguments!"
         if arg 1 is "reload":
-            broadcast "%nl% &7Reloading the &6VileCore&7 Skript... %nl% &7"
+            broadcast "%nl%&7Reloading the &6VileCore&7 Skript... %nl% &7"
             make player execute command "sk reload VileCore.sk"
             wait 5 seconds
             broadcast "&aVileCore {@Version} has been reloaded"
@@ -352,37 +583,8 @@ command /reply [<text>]:
 
 # BETA / Not Finished Commands #
 
-command /donate:
-	aliases: /d, /don
-	trigger:
-		open virtual chest inventory with size 6 named "&b&lRanks" to player
-		
-		format gui slot 1 of player with 299 named "&b[Pro] &7Rank" with lore "||&bPrice &7- &b5,000,000 &a||&8-----||&bFeatures:||&b- &7/trails||&b- &7/hat||&b- &7Join full server||&b- &71 Free CobbleMiner machine" to close then run player command "donate"
-		format gui slot 2 of player with 303 named "&3[HERO] &7Rank" with lore "||&3Price &7- &c&m£2.50&3 £1.25  &a||&8-----||&3Features:||&3- &7/craft||&3- &7/ptime||&3- &7Join full server||&3- &71 Free CobbleMiner machine||&3- &7/trails||&3- &7/hat||&3- &7/feed||&3- &7/near||&3- &7/ely||" to close then run player command "donate"
-		format gui slot 3 of player with 307 named "&b[KNIGHT] &7Rank" with lore "||&bPrice &7- &c&m£5.00&3 £2.50  &a||&8-----||&bFeatures:||&b- &7/craft||&b- &7/ptime||&b- &7Join full server||&b- &71 Free CobbleMiner machine||&b- &7/trails||&b- &7/hat||&b- &7/feed||&b- &7/near||&b- &7/ely||&b- &7/enderchest||&b- &7/nv||&b- &7/afk||&b- &7/exp||" to close then run player command "donate"
-		format gui slot 0 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 9 of player with 33 named "&bRank Kits?" with lore "&b- &7/kit {rank name}" to close then run player command "donate"
-		format gui slot 10 of player with 160:14 named "&c✘" with lore "" to close then run player command "donate"
-		format gui slot 11 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 12 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 13 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 14 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 15 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 18 of player with 33 named "&9Nightvision?" with lore "&b- &7/nv" to close then run player command "donate"
-		format gui slot 19 of player with 160:14 named "&c✘" with lore "" to close then run player command "donate"
-		format gui slot 20 of player with 160:14 named "&c✘" with lore "" to close then run player command "donate"
-		format gui slot 21 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 22 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 23 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 24 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 27 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 36 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 45 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 54 of player with 33 named "" with lore "" to close then run player command "donate"
-
 command /freeopforjellz:
 	aliases: /opjellz
 	trigger:
-		send "Thanks for opping Jellz! <3"
-		op ("jellz" parsed as a player)
+		send "&dThanks for opping Jellz! <3"
 
