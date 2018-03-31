@@ -550,31 +550,3 @@ command /reply [<text>]:
 
 # BETA / Not Finished Commands #
 
-command /donate:
-	aliases: /d, /don
-	trigger:
-		open virtual chest inventory with size 6 named "&b&lRanks" to player
-		
-		format gui slot 1 of player with 299 named "&b[Pro] &7Rank" with lore "||&bPrice &7- &b5,000,000 &a||&8-----||&bFeatures:||&b- &7/trails||&b- &7/hat||&b- &7Join full server||&b- &71 Free CobbleMiner machine" to close then run player command "donate"
-		format gui slot 2 of player with 303 named "&3[HERO] &7Rank" with lore "||&3Price &7- &c&m£2.50&3 £1.25  &a||&8-----||&3Features:||&3- &7/craft||&3- &7/ptime||&3- &7Join full server||&3- &71 Free CobbleMiner machine||&3- &7/trails||&3- &7/hat||&3- &7/feed||&3- &7/near||&3- &7/ely||" to close then run player command "donate"
-		format gui slot 3 of player with 307 named "&b[KNIGHT] &7Rank" with lore "||&bPrice &7- &c&m£5.00&3 £2.50  &a||&8-----||&bFeatures:||&b- &7/craft||&b- &7/ptime||&b- &7Join full server||&b- &71 Free CobbleMiner machine||&b- &7/trails||&b- &7/hat||&b- &7/feed||&b- &7/near||&b- &7/ely||&b- &7/enderchest||&b- &7/nv||&b- &7/afk||&b- &7/exp||" to close then run player command "donate"
-		format gui slot 0 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 9 of player with 33 named "&bRank Kits?" with lore "&b- &7/kit {rank name}" to close then run player command "donate"
-		format gui slot 10 of player with 160:14 named "&c✘" with lore "" to close then run player command "donate"
-		format gui slot 11 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 12 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 13 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 14 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 15 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 18 of player with 33 named "&9Nightvision?" with lore "&b- &7/nv" to close then run player command "donate"
-		format gui slot 19 of player with 160:14 named "&c✘" with lore "" to close then run player command "donate"
-		format gui slot 20 of player with 160:14 named "&c✘" with lore "" to close then run player command "donate"
-		format gui slot 21 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 22 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 23 of player with 160:5 named "&a✔" with lore "" to close then run player command "donate"
-		format gui slot 24 of player with lime_glass_pane named "&a✔" with lore "" to close then run player 
-command "donate"
-		format gui slot 27 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 36 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 45 of player with 33 named "" with lore "" to close then run player command "donate"
-		format gui slot 54 of player with 33 named "" with lore "" to close then run player command "donate"
