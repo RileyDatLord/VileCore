@@ -277,7 +277,7 @@ on chat:
             
 # Buycraft Purchase Message Thingys #
 
-command /console:kitbuilder [<offline player>]:
+command /console:kitbuilder [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -287,7 +287,7 @@ command /console:kitbuilder [<offline player>]:
           broadcast "&7&m------------------------"
           make console execute command "/kit builder %argument 1%"
 
-command /console:kitbutcher [<offline player>]:
+command /console:kitbutcher [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -297,7 +297,7 @@ command /console:kitbutcher [<offline player>]:
           broadcast "&7&m------------------------"
           make console execute command "/kit butcher %argument 1%"
 
-command /console:unban [<offline player>]:
+command /console:unban [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -307,7 +307,7 @@ command /console:unban [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "unban %argument 1%"
 
-command /console:unmute [<offline player>]:
+command /console:unmute [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -317,7 +317,7 @@ command /console:unmute [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "mute %argument 1%"
 
-command /console:sellwand [<offline player>]:
+command /console:sellwand [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -327,7 +327,7 @@ command /console:sellwand [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "sellwands give %argument 1%"
 
-command /console:xpsword [<offline player>]:
+command /console:xpsword [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -337,7 +337,7 @@ command /console:xpsword [<offline player>]:
           broadcast "&7&m------------------------"
           make console execute command "kit xpsword %argument 1%"
 
-command /console:fly [<offline player>]:
+command /console:fly [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -347,7 +347,7 @@ command /console:fly [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuaddp %argument 1% essentials.fly"
 
-command /console:feed [<offline player>]:
+command /console:feed [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -357,7 +357,7 @@ command /console:feed [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuaddp %argument 1% essentials.feed"                                        
 
-command /console:repaircard [<offline player>]:
+command /console:repaircard [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -367,7 +367,7 @@ command /console:repaircard [<offline player>]:
           broadcast "&7&m------------------------"
           make console execute command "/repaircard %argument 1%"
 
-command /console:starterbundle [<offline player>]:
+command /console:starterbundle [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -383,7 +383,7 @@ command /console:starterbundle [<offline player>]:
           make console execute command "mp 2 %argument 1% 2"
           make console execute command "eco give %argument 1% 75000"        
 
-command /console:rankhero [<offline player>]:
+command /console:rankhero [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -393,7 +393,7 @@ command /console:rankhero [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuadd %argument 1% Hero"      
 
-command /console:rankknight [<offline player>]:
+command /console:rankknight [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -403,7 +403,7 @@ command /console:rankknight [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuadd %argument 1% Knight" 
 
-command /console:ranklord [<offline player>]:
+command /console:ranklord [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -413,7 +413,7 @@ command /console:ranklord [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuadd %argument 1% Lord"
 
-command /console:rankgod [<offline player>]:
+command /console:rankgod [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -423,7 +423,7 @@ command /console:rankgod [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuadd %argument 1% God"   
 
-command /console:rankvile [<offline player>]:
+command /console:rankvile [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -433,7 +433,7 @@ command /console:rankvile [<offline player>]:
           broadcast "&7&m------------------------"
           execute console command "manuadd %argument 1% Vile"                              
 
-command /console:luckyrake [<offline player>]:
+command /console:luckyrake [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -443,7 +443,7 @@ command /console:luckyrake [<offline player>]:
           broadcast "&7&m------------------------"
           give argument 1 diamond hoe named "&2&lLucky Rake" with lore "||&725%% Chance of getting a random item from mining crops."          
 
-command /console:boostwand1 [<offline player>]:
+command /console:boostwand1 [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -452,7 +452,8 @@ command /console:boostwand1 [<offline player>]:
           broadcast "&r"
           broadcast "&7&m------------------------" 
           give argument 1 stick named "&2&lBoost Wand &7(Tier 1)" with lore "||&7Click whilst holding the wand and be boosted into the skies."          
-command /console:boostwand2 [<offline player>]:
+
+command /console:boostwand2 [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
@@ -461,7 +462,8 @@ command /console:boostwand2 [<offline player>]:
           broadcast "&r"
           broadcast "&7&m------------------------" 
           give argument 1 stick named "&2&lBoost Wand &7(Tier 2)" with lore "||&7Click whilst holding the wand and be boosted into the skies."
-command /console:boostwand3 [<offline player>]:
+
+command /console:boostwand3 [<player>]:
      permission: op
      trigger:
           broadcast "&7&m------------------------"
