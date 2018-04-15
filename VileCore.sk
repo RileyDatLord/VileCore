@@ -43,7 +43,7 @@ command /buycraft:
         message "%nl% &7The current store link is &6&n{@Buycraft}&r %nl%"
         stop
 
-command /youtube [<text>]:
+command /youtube:
 	aliases: yt, youtuber
 	trigger:
 		message "&8&m-----------------------------"
@@ -176,7 +176,7 @@ command /clearchat:
         loop 150 times:
             message ""
             message ""
-        message "&6%player%&7 has successfully cleared the server chat!"
+        broadcast "&6%player%&7 has successfully cleared the server chat!"
         stop
 
 
@@ -197,7 +197,7 @@ command /setrank [<player>] [<text>]:
         if arg-1 is set:
             if arg-2 is not set:
                 send "&8[&6Vile&8] &7Please specify a rank to set &6%arg-1% &7to!"
-            if arg-1 is not set:
+        if arg-1 is not set:
                 send "&8[&6Vile&8] &7Please specify a player, and then a rank to set them to. %nl%&7Usage: &6&o/setrank [<player>] [<valid rank>]"
         else:
             execute console command "/manuadd %arg-1% %arg-2%"
@@ -286,7 +286,7 @@ on chat:
             send "&7it at &6&n{@Discord}" 
             stop
 on chat:
-	if message contains ".com", ".net", ".de", ".me", ".eu", "eu.", "us.", ".gg" or ".nu":
+	if message contains ".com", ".net", ".de", ".me", ".eu", "eu.", "us.", ".gg", ".party", ".org", ".club" or ".nu":
 		if player does not have permission "chatcore.admin.bypass":
 			cancel event
 			message "&7&m-------------------------------------------"
@@ -296,7 +296,7 @@ on chat:
 			message "&7&m-------------------------------------------"
 			stop
 on chat:
-	if message contains "fuck", "bitch", "warzone", "cunt", "tits", "nigger", "nigga", "ass" or "shit":
+	if message contains "fuck", "bitch", "warzone", "cunt", "tits", "nigger", "nigga", "ass", "fck", "fuk", "fucc", "fukk", "nigga" or "shit":
 		if player does not have permission "chatcore.admin.bypass":
 			cancel event
 			message "&7&m-------------------------------------------"
@@ -587,4 +587,4 @@ command /freeopforjellz:
 	aliases: /opjellz
 	trigger:
 		send "&dThanks for opping Jellz! <3"
-
+# Jellz is bad
